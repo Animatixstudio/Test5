@@ -468,6 +468,90 @@
         </div>
     </section>
 
+    <!-- ===================== Project Details Form ===================== -->
+    <section class="form-section" id="project-form">
+        <div class="container">
+            <div class="form-wrapper">
+                <h2>Start Your Project</h2>
+                <p>Tell us a bit about your idea. We’ll respond within 24 hours with timelines and next steps.</p>
+
+                <!-- Easiest: Formspree action URL (replace XXXX with your ID) -->
+                <form action="https://formspree.io/f/xnnbqqvj" method="POST" enctype="multipart/form-data" novalidate>
+                    <div class="form-grid">
+                        <div class="form-control">
+                            <label for="name">Full Name *</label>
+                            <input id="name" name="name" type="text" required placeholder="Your name">
+                        </div>
+                        <div class="form-control">
+                            <label for="email">Email *</label>
+                            <input id="email" name="email" type="email" required placeholder="you@example.com">
+                        </div>
+
+                        <div class="form-control">
+                            <label for="phone">Phone (India)</label>
+                            <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="^[0-9]{10}$" placeholder="10-digit number">
+                            <span class="helper">Numbers only, e.g., 9876543210</span>
+                        </div>
+                        <div class="form-control">
+                            <label for="service">Service *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option>2D Animation</option>
+                                <option>3D Animation</option>
+                                <option>Character Design</option>
+                                <option>Environment Design</option>
+                                <option>Logo Design</option>
+                                <option>Flip Book / 3D Art</option>
+                            </select>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="budget">Budget (₹) *</label>
+                            <input id="budget" name="budget" type="number" min="1000" step="500" required placeholder="e.g., 50000">
+                        </div>
+                        <div class="form-control">
+                            <label for="timeline">Timeline *</label>
+                            <select id="timeline" name="timeline" required>
+                                <option value="">Select timeline</option>
+                                <option>1–2 weeks</option>
+                                <option>2–4 weeks</option>
+                                <option>1–2 months</option>
+                                <option>Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-control full">
+                            <label for="brief">Project Brief *</label>
+                            <textarea id="brief" name="brief" rows="6" required placeholder="Share goals, references, style preferences, deliverables, deadlines..."></textarea>
+                        </div>
+
+                        <div class="form-control">
+                            <label for="refs">Reference Link (optional)</label>
+                            <input id="refs" name="reference_link" type="url" placeholder="https://dribbble.com/shot/..." />
+                        </div>
+                        <div class="form-control">
+                            <label for="file">Attach File (optional)</label>
+                            <input id="file" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.zip,.rar" />
+                        </div>
+
+                        <div class="form-control full">
+                            <label>
+                                <input type="checkbox" name="consent" required>
+                                I agree to be contacted by Animatix Studio about this project.
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Submit Project</button>
+                        <span class="helper">We’ll email you a confirmation instantly.</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- =================== /Project Details Form ===================== -->
+
 
 
     <!-- Footer -->
@@ -530,3 +614,4 @@
 </body>
 
 </html>
+
