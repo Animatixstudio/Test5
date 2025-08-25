@@ -224,3 +224,82 @@
                 }
             });
         });
+
+  (function () {
+  const form = document.getElementById('projectForm');
+  if (!form) return;
+
+  const toast = document.getElementById('formToast');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const btnText = submitBtn?.querySelector('.btn-text');
+
+  function showToast(msg, type = 'success') {
+    if (!toast) return alert(msg);
+    toast.textContent = msg;
+    toast.className = `form-toast ${type}`;
+    toast.style.display = 'block';
+  }
+
+  function setSubmitting(state) {
+    if (!submitBtn) return;
+    submitBtn.disabled = state;
+    if (btnText) btnText.textContent = state ? 'Sending…' : 'Submit Project';
+  }
+
+  form.addEventListener('submit', async (e) => {
+    // graceful enhancement: if JS fails, native POST still works
+    e.preventDefault();
+
+    // honeypot check (bots fill everything)
+    if (form.querySelector('input[name="company"]')?.value) {
+      showToast('Spam detected.', 'error');
+      return;
+    }
+
+    // basic HTML5 validity check
+    if (!form.checkValidity?.()) {
+      showToast('Please fill all required fields correctly.', 'error');
+      form.reportValidity?.();
+      return;
+    }
+
+    setSubmitting(true);
+
+    try {
+      const endpoint = form.getAttribute('action');
+      const formData = new FormData(form);
+
+      // some providers need JSON; most webhooks accept FormData. If yours needs JSON, swap the fetch body accordingly.
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' } // helps Formspree/others return JSON
+      });
+
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || `HTTP ${res.status}`);
+      }
+
+      // analytics (optional)
+      if (window.va && typeof window.va.track === 'function') {
+        window.va.track('Project Form Submitted', {
+          service: formData.get('service') || 'unknown',
+          budget: formData.get('budget') || 'na'
+        });
+      }
+
+      showToast('Thanks! We’ll get back within 24 hours.', 'success');
+      form.reset();
+
+      // optional: scroll to the toast
+      toast?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    } catch (err) {
+      showToast('Could not submit. Please try again or email animatixanimation@gmail.com.', 'error');
+      console.error('Form submit error:', err);
+    } finally {
+      setSubmitting(false);
+    }
+  });
+})();
