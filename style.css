@@ -1074,4 +1074,240 @@
 
         .portfolio-item.video-item:hover::after {
             opacity: 1;
+
+        }
+
+/* ================================
+   Project Form Section (Animatix)
+   ================================ */
+
+        /* anchor offset for fixed header */
+        #project-form {
+          scroll-margin-top: 96px;
+        }
+
+        /* Section shell */
+        .form-section {
+          padding: clamp(64px, 8vw, 100px) 0;
+          background: #0b0b0d;
+          /* dark section bg */
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Card wrapper */
+        .form-section .form-wrapper {
+          max-width: 960px;
+          margin: 0 auto;
+          padding: clamp(24px, 3vw, 40px);
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 16px;
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+          backdrop-filter: blur(6px);
+        }
+
+        /* Headings & copy */
+        .form-section h2 {
+          color: #ffffff;
+          font-size: clamp(28px, 3vw, 36px);
+          line-height: 1.2;
+          letter-spacing: 0.2px;
+          margin: 0 0 6px;
+        }
+
+        .form-section p {
+          color: #a7a7b2;
+          margin: 0 0 24px;
+        }
+
+        /* Grid */
+        .form-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
+
+        .form-grid .full {
+          grid-column: 1 / -1;
+        }
+
+        @media (max-width: 860px) {
+          .form-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        /* Controls */
+        .form-control {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .form-control label {
+          color: #d7d7e0;
+          font-weight: 500;
+          font-size: 14px;
+        }
+
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+          appearance: none;
+          width: 100%;
+          background: #0e0e14;
+          color: #e9e9f2;
+          border: 1px solid #2a2a38;
+          border-radius: 10px;
+          padding: 12px 14px;
+          outline: none;
+          transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+          font-family: inherit;
+          /* Poppins */
+        }
+
+        .form-control textarea {
+          min-height: 140px;
+          resize: vertical;
+        }
+
+        .form-control input::placeholder,
+        .form-control textarea::placeholder {
+          color: #7b7b8d;
+        }
+
+        /* Focus & validation */
+        .form-control input:focus-visible,
+        .form-control select:focus-visible,
+        .form-control textarea:focus-visible {
+          border-color: #5b7cfa;
+          box-shadow: 0 0 0 4px rgba(91, 124, 250, 0.22);
+        }
+
+        .form-control input:user-invalid,
+        .form-control select:user-invalid,
+        .form-control textarea:user-invalid {
+          border-color: #ff6b6b;
+        }
+
+        /* Helper text & checkbox row */
+        .helper {
+          font-size: 12px;
+          color: #8f90a6;
+        }
+
+        .form-control label>input[type="checkbox"] {
+          margin-right: 8px;
+          transform: translateY(1px);
+        }
+
+        /* File input (nicer look) */
+        .form-control input[type="file"] {
+          padding: 10px 12px;
+          cursor: pointer;
+        }
+
+        .form-control input[type="file"]::-webkit-file-upload-button {
+          background: #1a1a24;
+          border: 1px solid #2a2a38;
+          color: #d7d7e0;
+          padding: 8px 10px;
+          border-radius: 8px;
+          margin-right: 10px;
+          cursor: pointer;
+        }
+
+        .form-control input[type="file"]::file-selector-button {
+          background: #1a1a24;
+          border: 1px solid #2a2a38;
+          color: #d7d7e0;
+          padding: 8px 10px;
+          border-radius: 8px;
+          margin-right: 10px;
+          cursor: pointer;
+        }
+
+        /* Number inputs (hide spinners) */
+        .form-control input[type="number"]::-webkit-outer-spin-button,
+        .form-control input[type="number"]::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        .form-control input[type="number"] {
+          -moz-appearance: textfield;
+        }
+
+        /* Actions */
+        .form-actions {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-top: 8px;
+        }
+
+        /* Button — scoped so it won't affect other .btn-primary */
+        #project-form .btn-primary {
+          display: inline-block;
+          background: linear-gradient(180deg, #6a86ff 0%, #5b7cfa 100%);
+          color: #fff;
+          padding: 12px 18px;
+          border-radius: 10px;
+          text-decoration: none;
+          font-weight: 600;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: 0 10px 24px rgba(91, 124, 250, 0.35);
+          transform: translateZ(0);
+          transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+        }
+
+        #project-form .btn-primary:hover {
+          transform: translateY(-2px);
+          filter: brightness(1.05);
+        }
+
+        #project-form .btn-primary:active {
+          transform: translateY(0);
+        }
+
+        /* Light decorative accents (optional) */
+        .form-section::before,
+        .form-section::after {
+          content: "";
+          position: absolute;
+          width: 360px;
+          height: 360px;
+          background: radial-gradient(ellipse at center, rgba(91, 124, 250, 0.18), rgba(91, 124, 250, 0) 60%);
+          filter: blur(18px);
+          pointer-events: none;
+        }
+
+        .form-section::before {
+          top: -80px;
+          left: -80px;
+        }
+
+        .form-section::after {
+          bottom: -80px;
+          right: -80px;
+        }
+
+        /* Tiny form toast messages (if you add them later) */
+        .form-toast {
+          margin-top: 16px;
+          padding: 12px 14px;
+          border-radius: 10px;
+          font-size: 14px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .form-toast.success {
+          background: rgba(46, 204, 113, 0.08);
+          color: #b9f6ce;
+        }
+
+        .form-toast.error {
+          background: rgba(231, 76, 60, 0.08);
+          color: #ffd0d0;
         }
